@@ -78,37 +78,6 @@ template(name='slide3')
       | single code-base app for all platforms, without compromise.
     .footer gadicc
 
-template(name='_slide3')
-  +Modifier
-    +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
-      h2 "Made for Eachother"
-      br
-      br
-      br
-      br
-      br
-      br
-      br        
-      p
-        | Both well-funded* companies founded by successful entrepreuners
-        | choosing to 
-
-      .footer gadicc
-    +Modifier translate="[0,100]"
-      +GridLayout direction="X" dimensions="[2,1]"
-        +Surface
-          span(style="font-size: 48px; vertical-align: middle; position: relative; top: -12px")
-            img(src="/img/meteor-logo.png",style="height: 50px; vertical-align: middle")
-          ul
-            li Fastest way to build "modern" apps
-
-        +Surface
-          span(style="font-size: 48px; vertical-align: middle")
-            | FAMO.US
-            img(src="/img/famous_logo.jpg",style="height: 50px; vertical-align: middle")
-          ul
-            li Native performance and interactions in JS
-
 template(name='slide4')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 Dev Setup
@@ -149,13 +118,12 @@ template(name='slide4')
       | Meteor.  <i>mjn:famous</i> includes the full library as a global.
       | <i>raix:famono</i> bundles only what you use (via global usage).  Next
       | page: famous-views.
-
     .footer gadicc
 
 template(name='slide5')
   +Modifier
     +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
-      h2 Meetup Famous - Famous-Views
+      h2 Famous-Views
       p
         i.fa.fa-download
         | 5,479 &nbsp;&nbsp;
@@ -185,129 +153,7 @@ template(name='slide5')
     +Surface size="[230,230]" align='[0.93,0.93]' origin='[1,1]'
       img(src="/img/meteor_famous_view_logo.svg",style="width:100%")
 
-
 template(name='slide6')
-  +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
-    h2 Meetup Famous - Getting Started
-    p Raw Famo.us -
-      a(href="http://famo.us/university/lessons/#/famous-101/displaying/1") Surface
-    +snippet lang="javascript"
-      | var Engine = require('famous/core/Engine');
-      | var Surface = require('famous/core/Surface');
-      | 
-      | var mainContext = Engine.createContext();
-      | 
-      | var firstSurface = new Surface({
-      |   content: "&lt;h3>Hi!&lt;/h3>&lt;p>I'm a surface!&lt;br>I live inside a context." +
-      |     "&lt;/p>&lt;p>You can add &lt;b>HTML&lt;/b> content to me and style me with " +
-      |     "&lt;b>CSS!&lt;/b>&lt;/p>",
-      |   size: [200, 200],
-      |   properties: {
-      |     backgroundColor: 'rgb(240, 238, 233)',
-      |     textAlign: 'center',
-      |     padding: '5px',
-      |     border: '2px solid rgb(210, 208, 203)',
-      |     marginTop: '50px',
-      |     marginLeft: '50px'
-      |   }
-      | });
-      | 
-      | mainContext.add(firstSurface);
-    .footer gadicc
-
-template(name='slide7')
-  +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
-    h2 Meetup Famous - Getting Started
-    p Raw Famo.us -
-      a(href="http://famo.us/university/lessons/#/famous-101/positioning/2") Modifiers
-    +snippet lang="javascript"
-      | var Engine = require('famous/core/Engine');
-      | var Surface = require('famous/core/Surface');
-      | var Transform = require('famous/core/Transform');
-      | var StateModifier = require('famous/modifiers/StateModifier');
-      | 
-      | var mainContext = Engine.createContext();
-      | 
-      | var stateModifier = new StateModifier({
-      |   transform: Transform.translate(150, 100, 0)
-      | });
-      | 
-      | var surface = new Surface({
-      |   size: [100, 100],
-      |   properties: {
-      |     backgroundColor: '#FA5C4F'
-      |   }
-      | });
-      | 
-      | mainContext.add(stateModifier).add(surface);
-    .footer gadicc
-
-template(name='slide8')
-  +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
-    h2 Meetup Famous - Getting Started
-    p Raw Famo.us -
-      a(href="http://famo.us/university/lessons/#/famous-101/animating/3") Animation
-      | (pages 3 + 7)
-    +snippet lang="javascript"
-      | var Engine = require('famous/core/Engine');
-      | var Surface = require('famous/core/Surface');
-      | var Transform = require('famous/core/Transform');
-      | var StateModifier = require('famous/modifiers/StateModifier');
-      | var Easing = require('famous/transitions/Easing');
-      | 
-      | var mainContext = Engine.createContext();
-      | 
-      | var surface = new Surface({
-      |   size: [100, 100],
-      |   properties: { color: 'white', textAlign: 'center', backgroundColor: '#FA5C4F' }
-      | });
-      | 
-      | var stateModifier = new StateModifier();
-      | 
-      | mainContext.add(stateModifier).add(surface);
-      | 
-      | stateModifier.setTransform(
-      |   Transform.translate(100, 300, 0),
-      |   { duration : 1000, curve: Easing.inOutBack }
-      | );
-    span Ref:
-      a(href="http://pem-musing.blogspot.co.il/2014/10/charts-for-easy-choosing-your-famous.html") Easing Charts by PEM--
-    .footer gadicc
-
-template(name='slide9')
-  +Modifier
-    +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
-      h2 Meetup Famous - Famous-Views
-      p
-        i.fa.fa-download
-        | 4,463 &nbsp;&nbsp;
-        i.fa.fa-star
-        | 64 (Atmosphere) &nbsp;&nbsp;
-        i.fa.fa-star
-        | 270 (GitHub)
-      p "Doing Famo.us the Meteor Way"
-
-      ul
-        li <b>Primarily</b> - a low level wrapper around Famo.us
-        li Create the render tree with <i>markup</i> and <i>reuseable templates</i>
-        li Componentization via <i>inclusion</i> & <i>Template.x.rendered/events/helpers</i>
-        li <i>famousEach</i> connects reactive data sources how you'd expect (demo later)
-        li famousIf - as above for the Render Tree vs the DOM
-        li View attributes accept flexible input and reactive helpers
-        li Manages reactive computations for Meteor to avoid lost frames
-        li Works out of the box with iron-router (e.g. this slidedeck)
-      ul
-        li Wrappers around some of the few Famo.us provided views
-        li
-          a(href="http://famous-views.meteor.com/plugins") 13 powerful plugins
-          | and counting.
-        li
-          a(href="https://github.com/meteor-useraccounts/famous-wrapper/") useraccounts:famous-wrapper
-      .footer gadicc
-    +Surface size="[230,230]" align='[0.93,0.93]' origin='[1,1]'
-      img(src="/img/meteor_famous_view_logo.svg",style="width:100%")
-
-template(name='slide10')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 Meetup Famous - Getting Started
     p famous-views -
@@ -334,68 +180,119 @@ template(name='slide10')
         a(href="http://fview-lab.meteor.com/") FView Lab
     .footer gadicc
 
-template(name='slide11')
-  +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
-    h2 Meetup Famous - Getting Started
-    p famous-views - Basics
-    +snippet lang="spacebars"
-      | &lt;head>
-      |   &lt;!-- this is critical for mobile and emulation to look and work properly -->
-      |   &lt;meta name="viewport" content="width=device-width, maximum-scale=1, user-scalable=no">
-      | &lt;/head>
-      | 
-      | &lt;body>
-      |   {{dstache}}#famousContext id="mainCtx"}}
-      |     {{dstache}}#Surface}}
-      |       I am a full size Surface
-      |     {{dstache}}/Surface}}
-      |   {{dstache}}/famousContext}}
-      | &lt;/body>
-    else
-      if currentLang "jade"
-        | head
-        |   // this is critical for mobile and emulation to look and work properly
-        |   meta(name='viewport', content='width=device-width, maximum-scale=1, user-scalable=no')
-        | 
-        | body
-        |   +famousContext id="mainCtx"
-        |     +Surface
-        |       | I am a full size Surface
-    p Next page: inline vs inclusion
 
-template(name='slide12')
+template(name='slide7')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
-    h2 Meetup Famous - Getting Started
-    +snippet lang="spacebars"
-      | &lt;body>
-      |   {{dstache}}#famousContext id="mainCtx"}}
-      |     {{dstache}}#Surface}}
-      |       I am a full size Surface
-      |     {{dstache}}/Surface}}
-      |   {{dstache}}/famousContext}}
-      | &lt;/body>
-    +snippet lang="spacebars"
-      | &lt;body>
-      |   {{dstache}}#famousContext id="mainCtx"}}
-      |     {{dstache}}>Surface template="mySurface"}}
-      |   {{dstache}}/famousContext}}
-      | &lt;/body>
-      | 
-      | &lt;template name="mySurface">
-      |    I am a full size Surface
-      | &lt;/template>
-    +snippet lang="javascript"
-      | Template.mySurface.rendered = function() { ... };
-      | 
-      | Template.mySurface.famousEvents({
-      |   'click': function() { ... }
-      | });
+    h2 JavaScript vs Markup: Surface
+    table(style="width: 100%")
+      tr
+        td(valign="top",style="width: 50%; padding-right: 2px")
+          span(style="font-size: 48px; vertical-align: middle")
+            | VANILLA
+            img(src="/img/famous_logo.jpg",style="height: 50px; vertical-align: middle")
+          +prism(lang="javascript")
+            | var Engine = require('famous/core/Engine');
+            | var Surface = require('famous/core/Surface');
+            | 
+            | var mainContext = Engine.createContext();
+            | 
+            | var firstSurface = new Surface({
+            |   content: "&lt;h3>Hi!&lt;/h3>&lt;p>I'm a surface!&lt;br>I live" +
+            |     " inside a context.&lt;/p>&lt;p>You can add &lt;b>HTML&lt;/b>" +
+            |     " content to me and style me with&lt;b>CSS!&lt;/b>&lt;/p>",
+            |   size: [200, 200],
+            |   properties: {
+            |     backgroundColor: 'rgb(240, 238, 233)',
+            |     etc...
+            |   }
+            | });
+            | 
+            | mainContext.add(firstSurface);
+        td(valign="top",style="width: 50%; padding-left: 2px")
+          span(style="font-size: 48px; vertical-align: middle;")
+            img(src="/img/meteor_famous_view_logo.svg",style="height: 50px; vertical-align: middle; position: relative; top: -12px")
+            | FAMOUS-VIEWS
+          +snippet(lang="spacebars")
+            | &lt;body>
+            |   {{dstache}}famousContext id="mainCtx"}}
+            |     {{dstache}}Surface size="[200,200]"
+            |         style="background: rgb(240,238,233); etc..."}}
+            |       &lt;h3>Hi!&lt;/h3>
+            |       &lt;p>I'm a surface!&lt;br>I live inside a context&lt;/p>
+            |       &lt;p>You can add &lt;b>HTML&lt;/b> content to me and
+            |         style me with &lt;b>CSS!&lt;/b>
+            |     {{dstache}}/Surface}}
+            |   {{dstache}}/famousContext}}
+            | &lt;/body>
+          else
+            if currentLang "jade"
+              | body
+              |   +famousContext id="mainCtx"
+              |     +Surface size="[200,200]" style="background: etc"
+              |       h3 Hi!
+              |       p I'm a surface! &lt;br> I live inside a context
+              |       p You can add &lt;b>HTML&lt;/b> content to me and
+              |         | style me with &lt;b>CSS!&lt;/b> 
     .footer gadicc
 
-template(name='slide13')
+template(name='slide8')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
-    h2 Meetup Famous - Getting Started
-    p More advanced example
+    h2 JavaScript vs Markup: StateModifier Animation
+    table(style="width: 100%")
+      tr
+        td(valign="top",style="width: 50%; padding-right: 2px")
+          span(style="font-size: 48px; vertical-align: middle")
+            | VANILLA
+            img(src="/img/famous_logo.jpg",style="height: 50px; vertical-align: middle")
+          +prism(lang="javascript")
+            | var mainContext = Engine.createContext();
+            | 
+            | var surface = new Surface({
+            |   size: [100, 100],
+            |   properties: { background: '#FA5C4F', etc }
+            | });
+            | 
+            | var stateModifier = new StateModifier();
+            | 
+            | mainContext.add(stateModifier).add(surface);
+            | 
+            | stateModifier.setTransform(
+            |   Transform.translate(100, 300, 0),
+            |   { duration : 1000, curve: Easing.inOutBack }
+            | );
+        td(valign="top",style="width: 50%; padding-left: 2px")
+          span(style="font-size: 48px; vertical-align: middle;")
+            img(src="/img/meteor_famous_view_logo.svg",style="height: 50px; vertical-align: middle; position: relative; top: -12px")
+            | FAMOUS-VIEWS
+          +snippet(lang="spacebars")
+            | &lt;body>
+            |   {{dstache}}famousContext id="mainCtx"}}
+            |     {{dstache}}>Surface template="mySurface" modifier="StateModifier"
+            |       size="[100,100]" style="background: '#FA5c4F'; etc"}}
+            |   {{dstache}}/famousContext}}
+            | &lt;/body>
+            | 
+            | &lt;template name="mySurface">&lt;/template>
+          else
+            if currentLang "jade"
+              | body
+              |   +famousContext id="mainCtx"
+              |     +Surface template="mySurface" modifier="StateModifier"
+              | 
+              | template(name="mySurface")
+              |   | 
+          +snippet(lang="js")
+            | Template.mySurface.onRendered(function() {
+            |   FView.from(this).modifier.setTransform(
+            |     Transform.translate(100, 300, 0),
+            |     { duration : 1000, curve: Easing.inOutBack }
+            |   );
+            | });
+    .footer gadicc
+
+template(name='slide9')
+  +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
+    h2 More advanced example
     +snippet lang="spacebars"
       | {{dstache}}#Scrollview}}
       |   {{dstache}}#famousEach items}}
@@ -407,19 +304,25 @@ template(name='slide13')
       |   items: function() { return Items.find(); }
       | });
       | 
-      | Template.item.rendered = function() {
+      | Template.item.onRendered(function() {
       |   var modifier = FView.from(this).modifier;
       |   modifier.setTransform(Transform.translate(-500,-500));
       |   queue(100, function() {
       |     modifier.setTransform(Transform.translate(0,0),
       |       { duration: 500, curve: 'easeOut' } );
       |  });
-      | };
-    p See
+      | });
+      | 
+      | Template.item.famousEvents({
+      |   'click': function(event, fview) {
+      |     fview.modifier.setTransform(...);
+      |   }
+      | });
+    span See
       a(href="http://famous-views.meteor.com/views/GridLayout") GridLayout Example
     .footer gadicc
 
-template(name='slide14')
+template(name='slide10')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 Meetup Famous - Real Time Example
     p Using
@@ -454,7 +357,7 @@ template(name='slide14')
           a(href="http://fview-flex.meteor.com/") fview-flex
     .footer gadicc
 
-template(name='slide15')
+template(name='slide11')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 Meetup Famous - Famo.us Pros & Cons
     ul
@@ -481,7 +384,7 @@ template(name='slide15')
 
     .footer gadicc
 
-template(name="slide16")
+template(name="slide12")
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 Meetup Famous - That's it!
 
@@ -519,7 +422,3 @@ template(name="slide16")
 
     p Questions later?  Meetup group, GitHub issue.
     .footer gadicc
-
-// future: mixed mode, jquery, bootstrap, ionic
-
-// contact page, github email etc
