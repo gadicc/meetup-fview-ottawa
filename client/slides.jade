@@ -295,7 +295,7 @@ template(name='slide9')
           +snippet(lang="js")
             | Template.mySurface.onRendered(function() {
             |   var templateInstance = this;
-            |   var fview = FView.from(this);
+            |   var fview = FView.from(templateInstance);
             | 
             |   fview.modifier.setTransform(
             |     Transform.translate(100, 300, 0),
