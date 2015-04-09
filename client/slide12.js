@@ -1,7 +1,7 @@
 // Publish and AccountsExtra setup in server/accounts.js
 Meteor.subscribe('users');
 
-Template.slide11.helpers({
+Template.slide12.helpers({
   users: function() {
     var sortBy = Session.get('sortBy');
     var options = { sort: {} };
@@ -16,13 +16,13 @@ Template.slide11.helpers({
 
 Session.setDefault('sortBy', 'name');
 
-Template.slide11_options.events({
+Template.slide12_options.events({
   'click input': function(event, tpl) {
     Session.set('sortBy', this.valueOf());
   }
 });
 
-Template.slide11_options.helpers({
+Template.slide12_options.helpers({
   sortByOptions: [ 'name', 'date' ],
   checked: function() {
     return Session.equals('sortBy', this.valueOf());

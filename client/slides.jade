@@ -3,7 +3,7 @@ template(name='slide1')
     h2 Ottawa Meetup
     h1 Meteor & Famo.us
     img.gravatar(src='/img/gravatar.png')
-    h2 7th Apr, 2015
+    h2 9th Apr, 2015
     p These slides are available at:
       br
       a(href="http://meetup-fview-ottawa.meteor.com/") meetup-fview-ottawa.meteor.com
@@ -155,6 +155,19 @@ template(name='slide5')
 
 template(name='slide6')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
+    p(style="font-weight: bold; margin-top: .5em; margin-bottom: 10px; font-size: 80%")
+        | Famous-Views Contributors
+    img(src="/img/contributors.jpg",style="width:90%; margin-top: 5px")
+    br
+    span(style="vertical-align: middle")
+      | and
+      img(src="/img/splendido.jpg",style="height: 1.5em; vertical-align: middle")
+      b @splendido
+      | with
+      a(href="https://github.com/meteor-useraccounts/famous-wrapper/") useraccounts:famous-wrapper
+      | .
+template(name='slide7')
+  +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 Meetup Famous - Getting Started
     p famous-views -
       a(href="http://famous-views.meteor.com/start") QuickStart
@@ -181,7 +194,7 @@ template(name='slide6')
     .footer gadicc
 
 
-template(name='slide7')
+template(name='slide8')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 JavaScript vs Markup: Surface
     table(style="width: 100%")
@@ -232,7 +245,7 @@ template(name='slide7')
               |         | style me with &lt;b>CSS!&lt;/b> 
     .footer gadicc
 
-template(name='slide8')
+template(name='slide9')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 JavaScript vs Markup: StateModifier Animation
     table(style="width: 100%")
@@ -291,7 +304,7 @@ template(name='slide8')
             | });
     .footer gadicc
 
-template(name='slide9')
+template(name='slide10')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 More advanced example
     +snippet lang="spacebars"
@@ -323,7 +336,7 @@ template(name='slide9')
       a(href="http://famous-views.meteor.com/views/GridLayout") GridLayout Example
     .footer gadicc
 
-template(name='slide10')
+template(name='slide11')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 Meetup Famous - Real Time Example
     p Using
@@ -358,26 +371,26 @@ template(name='slide10')
           a(href="http://fview-flex.meteor.com/") fview-flex
     .footer gadicc
 
-template(name='_slide11')
-  | in slides11.jade
+template(name='_slide12')
+  | in slide12.jade
 
-template(name='slide12')
+template(name='slide13')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 Reactive Queries - Source - Template
     +prism lang="jade" class="line-numbers"
-      | template(name='slide11')
+      | template(name='slide12')
       |   +SequentialLayout size="[900,undefined]" align='[.5,.5]' origin='[.5,.5]'
-      |     +Surface template="slide11_options" size='[undefined,true]'
+      |     +Surface template="slide12_options" size='[undefined,true]'
       |     +ContainerSurface perspective=500 overflow="hidden"
       |       +FlexScrollView layout='CollectionLayout' layoutOptions='{"itemSize":[125,125],"spacing":[10,10]}'
       |         +famousEach users
-      |           +Surface template="slide11_user"
+      |           +Surface template="slide12_user"
       | 
-      | template(name='slide11_options')
+      | template(name='slide12_options')
       |   p(style="margin: 1em 0 10px 0;")
       |     b Reactive Queries - Demo
       |     br
-      |     a(href="/slides/11") meetup-fview-ottawa.meteor.com/slides11
+      |     a(href="/slides/12") meetup-fview-ottawa.meteor.com/slides/12
       |   span
       |     | Sort by: &nbsp;
       |     +each sortByOptions
@@ -388,20 +401,20 @@ template(name='slide12')
       |     br
       |     br
       | 
-      | template(name='slide11_user')
+      | template(name='slide12_user')
       |   div.profile
       |     img(src="&num;{profile.pic}")
       |     div &num;{profile.name}
     .footer gadicc
 
-template(name='slide13')
+template(name='slide14')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 Reactive Queries - Source - Code
     +snippet(lang="js")
       | // Publish and AccountsExtra setup in server/accounts.js
       | Meteor.subscribe('users');
       | 
-      | Template.slide11.helpers({
+      | Template.slide12.helpers({
       |   users: function() {
       |     var sortBy = Session.get('sortBy');
       |     var options = { sort: {} };
@@ -416,13 +429,13 @@ template(name='slide13')
       | 
       | Session.setDefault('sortBy', 'name');
       | 
-      | Template.slide11_options.events({
+      | Template.slide12_options.events({
       |   'click input': function(event, tpl) {
       |     Session.set('sortBy', this.valueOf());
       |   }
       | });
       | 
-      | Template.slide11_options.helpers({
+      | Template.slide12_options.helpers({
       |   sortByOptions: [ 'name', 'date' ],
       |   checked: function() {
       |     return Session.equals('sortBy', this.valueOf());
@@ -430,7 +443,7 @@ template(name='slide13')
       | });
     .footer gadicc
 
-template(name='slide14')
+template(name='slide15')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 Advantages of Meteor, Famous, Famous-Views
     p The <b><i>Meteor Advantage</i></b> - short, clean code with powerful results.
@@ -452,7 +465,7 @@ template(name='slide14')
         | and requires very little time to implement.  i.e. much lower
         | barrier to make your app a UI pleasure.
 
-template(name='slide15')
+template(name='slide16')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 Meetup Famous - Famo.us Pros & Cons
     ul
@@ -479,7 +492,7 @@ template(name='slide15')
 
     .footer gadicc
 
-template(name="slide16")
+template(name="slide17")
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 Meetup Famous - That's it!
 

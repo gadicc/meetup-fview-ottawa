@@ -1,16 +1,16 @@
-template(name='slide11')
+template(name='slide12')
   +SequentialLayout size="[900,undefined]" align='[.5,.5]' origin='[.5,.5]'
-    +Surface template="slide11_options" size='[undefined,true]'
+    +Surface template="slide12_options" size='[undefined,true]'
     +ContainerSurface perspective=500 overflow="hidden"
       +FlexScrollView layout='CollectionLayout' layoutOptions='{"itemSize":[125,125],"spacing":[10,10]}'
         +famousEach users
-          +Surface template="slide11_user"
+          +Surface template="slide12_user"
 
-template(name='slide11_options')
+template(name='slide12_options')
   p(style="margin: 1em 0 10px 0;")
     b Reactive Queries - Demo
     br
-    a(href="/slides/11") meetup-fview-ottawa.meteor.com/slides11
+    a(href="/slides/12") meetup-fview-ottawa.meteor.com/slides/12
   span
     | Sort by: &nbsp;
     +each sortByOptions
@@ -21,7 +21,7 @@ template(name='slide11_options')
     br
     br
 
-template(name='slide11_user')
+template(name='slide12_user')
   div.profile
     img(src="#{profile.pic}")
     div #{profile.name}
