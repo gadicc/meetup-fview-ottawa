@@ -1,0 +1,27 @@
+template(name='slide11')
+  +SequentialLayout size="[900,undefined]" align='[.5,.5]' origin='[.5,.5]'
+    +Surface template="slide11_options" size='[undefined,true]'
+    +ContainerSurface perspective=500 overflow="hidden"
+      +FlexScrollView layout='CollectionLayout' layoutOptions='{"itemSize":[125,125],"spacing":[10,10]}'
+        +famousEach users
+          +Surface template="slide11_user"
+
+template(name='slide11_options')
+  p(style="margin: 1em 0 10px 0;")
+    b Reactive Queries - Demo
+    br
+    a(href="/slides/11") meetup-fview-ottawa.meteor.com/slides11
+  span
+    | Sort by: &nbsp;
+    +each sortByOptions
+      label
+        input(type="radio",value="#{this}",checked=checked)
+        | #{this} &nbsp;&nbsp;
+    +loginButtons
+    br
+    br
+
+template(name='slide11_user')
+  div.profile
+    img(src="#{profile.pic}")
+    div #{profile.name}

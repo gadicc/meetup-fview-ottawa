@@ -191,9 +191,6 @@ template(name='slide7')
             | VANILLA
             img(src="/img/famous_logo.jpg",style="height: 50px; vertical-align: middle")
           +prism(lang="javascript")
-            | var Engine = require('famous/core/Engine');
-            | var Surface = require('famous/core/Surface');
-            | 
             | var mainContext = Engine.createContext();
             | 
             | var firstSurface = new Surface({
@@ -249,7 +246,8 @@ template(name='slide8')
             | 
             | var surface = new Surface({
             |   size: [100, 100],
-            |   properties: { background: '#FA5C4F', etc }
+            |   properties: { background: '#FA5C4F', etc },
+            |   content: 'Hi!'
             | });
             | 
             | var stateModifier = new StateModifier();
@@ -265,14 +263,14 @@ template(name='slide8')
             img(src="/img/meteor_famous_view_logo.svg",style="height: 50px; vertical-align: middle; position: relative; top: -12px")
             | FAMOUS-VIEWS
           +snippet(lang="spacebars")
-            | &lt;body>
+            | &lt;body&gt;
             |   {{dstache}}famousContext id="mainCtx"}}
-            |     {{dstache}}>Surface template="mySurface" modifier="StateModifier"
+            |     {{dstache}}&gt;Surface template="mySurface" modifier="StateModifier"
             |       size="[100,100]" style="background: '#FA5c4F'; etc"}}
             |   {{dstache}}/famousContext}}
-            | &lt;/body>
+            | &lt;/body&gt;
             | 
-            | &lt;template name="mySurface">&lt;/template>
+            | &lt;template name="mySurface"&gt;Hi!&lt;/template&gt;
           else
             if currentLang "jade"
               | body
@@ -280,10 +278,13 @@ template(name='slide8')
               |     +Surface template="mySurface" modifier="StateModifier"
               | 
               | template(name="mySurface")
-              |   | 
+              |   | Hi!
           +snippet(lang="js")
             | Template.mySurface.onRendered(function() {
-            |   FView.from(this).modifier.setTransform(
+            |   var templateInstance = this;
+            |   var fview = FView.from(this);
+            | 
+            |   fview.modifier.setTransform(
             |     Transform.translate(100, 300, 0),
             |     { duration : 1000, curve: Easing.inOutBack }
             |   );
@@ -357,7 +358,101 @@ template(name='slide10')
           a(href="http://fview-flex.meteor.com/") fview-flex
     .footer gadicc
 
-template(name='slide11')
+template(name='_slide11')
+  | in slides11.jade
+
+template(name='slide12')
+  +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
+    h2 Reactive Queries - Source - Template
+    +prism lang="jade" class="line-numbers"
+      | template(name='slide11')
+      |   +SequentialLayout size="[900,undefined]" align='[.5,.5]' origin='[.5,.5]'
+      |     +Surface template="slide11_options" size='[undefined,true]'
+      |     +ContainerSurface perspective=500 overflow="hidden"
+      |       +FlexScrollView layout='CollectionLayout' layoutOptions='{"itemSize":[125,125],"spacing":[10,10]}'
+      |         +famousEach users
+      |           +Surface template="slide11_user"
+      | 
+      | template(name='slide11_options')
+      |   p(style="margin: 1em 0 10px 0;")
+      |     b Reactive Queries - Demo
+      |     br
+      |     a(href="/slides/11") meetup-fview-ottawa.meteor.com/slides11
+      |   span
+      |     | Sort by: &nbsp;
+      |     +each sortByOptions
+      |       label
+      |         input(type="radio",value="&num;{this}",checked=checked)
+      |         | &num;{this} &nbsp;&nbsp;
+      |     +loginButtons
+      |     br
+      |     br
+      | 
+      | template(name='slide11_user')
+      |   div.profile
+      |     img(src="&num;{profile.pic}")
+      |     div &num;{profile.name}
+    .footer gadicc
+
+template(name='slide13')
+  +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
+    h2 Reactive Queries - Source - Code
+    +snippet(lang="js")
+      | // Publish and AccountsExtra setup in server/accounts.js
+      | Meteor.subscribe('users');
+      | 
+      | Template.slide11.helpers({
+      |   users: function() {
+      |     var sortBy = Session.get('sortBy');
+      |     var options = { sort: {} };
+      |     if (sortBy === 'name')
+      |       options.sort['profile.name'] = 1;
+      |     else
+      |       options.sort.createdAt = 1;
+      | 
+      |     return Meteor.users.find({}, options);
+      |   }
+      | });
+      | 
+      | Session.setDefault('sortBy', 'name');
+      | 
+      | Template.slide11_options.events({
+      |   'click input': function(event, tpl) {
+      |     Session.set('sortBy', this.valueOf());
+      |   }
+      | });
+      | 
+      | Template.slide11_options.helpers({
+      |   sortByOptions: [ 'name', 'date' ],
+      |   checked: function() {
+      |     return Session.equals('sortBy', this.valueOf());
+      |   }
+      | });
+    .footer gadicc
+
+template(name='slide14')
+  +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
+    h2 Advantages of Meteor, Famous, Famous-Views
+    p The <b><i>Meteor Advantage</i></b> - short, clean code with powerful results.
+    ul
+      li Meteor brings a full stack framework to Famous, with real time updates,
+        | reactivity, client-side database layer and everything we love about it,
+        | including official Cordova support.
+      li Famous brings native-feeling animations and user interactions to
+        | Meteor.
+      li Famous-views combines the two and let's us write Famo.us apps in a
+        | "Meteor" way.
+    p
+      b Where it Shines
+    ul
+      li Fastest, easiest, funnest way to build multi platform apps
+      li Reactivity lets us describe our layout declaratively rather than
+        | worrying about updating dependencies ourselves.
+      li Meteor "live" factor with Famo.us animations really shines,
+        | and requires very little time to implement.  i.e. much lower
+        | barrier to make your app a UI pleasure.
+
+template(name='slide15')
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 Meetup Famous - Famo.us Pros & Cons
     ul
@@ -384,41 +479,45 @@ template(name='slide11')
 
     .footer gadicc
 
-template(name="slide12")
+template(name="slide16")
   +Surface size='[900, undefined]' align='[.5, .5]' origin='[.5, .5]'
     h2 Meetup Famous - That's it!
 
     h3 Any Questions?  Some useful links:
 
-    p famous-views / slidedeck
     img(src="/img/meteor_famous_view_logo.svg",style="float: right; height: 5em")
+    p famous-views / slidedeck
     ul
       li
         a(href="http://famous-views.meteor.com/") famous-views.meteor.com
         | - demo/docs, github, plugins
       li
-        a(href="http://meetup-fview-ct.meteor.com/") meetup-fview-ct.meteor.com
+        a(href="http://meetup-fview-ottawa.meteor.com/") meetup-fview-ottawa.meteor.com
         | (
-        a(href="https://github.com/gadicc/meetup-fview-ct") sources
+        a(href="https://github.com/gadicc/meetup-fview-ct") source
         | )
-
-    p famo.us
-    img(src="/img/famous_logo.jpg",style="float: right; height: 7em")
-    ul
-      li
-        a(href="http://famo.us/") Official Famo.us Page
-      li
-        a(href="http://famo.us/university/home/#/") Famo.us university
       br
       li
-        a(href="http://venturebeat.com/2014/08/13/famo-us-raises-25m-to-double-down-on-javascript-app-development-framework/")
-          | Venture Beat Article (Aug 14)
-      li
-        a(href="https://hackpad.com/ep/pad/static/kPsHMaDFboE")
-          | Famo.us Links Hackpad
-      li
-        a(href="http://codepen.io/befamous/")
-          | Famo.us CodePen
+        a(href="http://fview-lab.meteor.com/") FView-Lab (pre-release):
+        ul
+          li
+            a(href="https://fview-lab.meteor.com/pads/qXd9Zm6bPm8NiuZeX") Intro to Meteor
+          li
+            a(href="https://fview-lab.meteor.com/pads/8qodSnNyLjdcKx3WK") FView Quick Start
+          li
+            a(href="https://fview-lab.meteor.com/fview-team") fview-team page
 
-    p Questions later?  Meetup group, GitHub issue.
+    span General
+    ul
+      li
+        a(href="http://www.meteor.com/") Meteor Homepage
+        | |
+        a(href="http://www.atmospherejs.com/") Atmosphere
+      li
+        | Famo.us
+        a(href="http://famo.us/") Homepage
+        | |
+        a(href="http://famo.us/university/home/#/") University
+
+    span Questions later?  Meetup group, GitHub issue.
     .footer gadicc
